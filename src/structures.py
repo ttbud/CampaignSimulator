@@ -1,14 +1,18 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Optional
 
 
-class InvalidScheduleError(BaseException):
+class InvalidScheduleError(Exception):
     pass
 
 
 class InvalidHourError(BaseException):
+    pass
+
+
+class InvalidHourError(Exception):
     pass
 
 
@@ -21,7 +25,7 @@ class LocationType:
 class Location:
     name: str
     sublocations: List[Location]
-    type: LocationType
+    type: Optional[LocationType] = None
 
 
 @dataclass

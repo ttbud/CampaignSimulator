@@ -1,0 +1,17 @@
+locations:
+  walmart:
+    type: store
+    sublocations:
+      - deli aisle
+      - inexplicably large gun section
+  deli aisle:
+    type: store
+  inexplicably large gun section:
+  steve's home:
+    type: house
+characters:
+  steve:
+    1-2: deli aisle
+    2-5: walmart
+    5-6: inexplicably large gun section
+    otherwise: steve's home

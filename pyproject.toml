@@ -6,6 +6,9 @@ authors = ["stephen johnson <stephen.johnson@rearden.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+typer = "^0.4.0"
+strictyaml = "^1.4.4"
+dacite = "^1.6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
