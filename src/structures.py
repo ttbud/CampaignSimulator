@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List, Tuple, Union, Optional
+from typing import List, Tuple, Union, Optional, Set
 
 
 class InvalidScheduleError(Exception):
@@ -29,12 +29,11 @@ class Schedule:
     schedule: List[Tuple[range, Union[Location, LocationType]]]
 
     def __init__(self, schedule: List[Tuple[range, Union[Location, LocationType]]]):
-        hours = list(range(24))
-        scheduled_times: List[int] = []
+        scheduled_times: Set[int] = set()
         for time_range, _ in schedule:
             for hour in time_range:
-                scheduled_times.append(hour)
-        if scheduled_times != hours:
+                scheduled_times.add(hour)
+        if len(scheduled_times) != 24:
             raise InvalidScheduleError()
         self.schedule = schedule
 
@@ -57,7 +56,7 @@ class PlayerLocations:
     player_locations: List[PlayerLocation]
 
     def __init__(self, hour: int, player_locations: List[PlayerLocation]):
-        if hour not in range(24):
+        if hour < 0 or hour > 23:
             raise InvalidHourError()
         self.hour = hour
         self.player_locations = player_locations
