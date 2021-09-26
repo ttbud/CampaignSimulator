@@ -8,10 +8,6 @@ class InvalidScheduleError(Exception):
     pass
 
 
-class InvalidHourError(BaseException):
-    pass
-
-
 class InvalidHourError(Exception):
     pass
 
